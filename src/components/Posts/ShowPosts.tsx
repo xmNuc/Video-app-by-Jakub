@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CardGroup, Col, Row } from 'reactstrap';
+import { Row } from 'reactstrap';
 import { OnePost } from './OnePost';
 import './ShowPosts.css';
 

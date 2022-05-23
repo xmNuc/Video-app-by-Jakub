@@ -2,3 +2,9 @@
   width: 20rem;
   margin: 10px;
 }
+.favorites {
+  width: 3rem;
+  position: absolute;
+  right: 1rem;
+  top: 10.5rem;
+}
