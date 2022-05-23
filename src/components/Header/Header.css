@@ -1,0 +1,15 @@
+header {
+  padding: 10px;
+  color: white;
+  background: rgba(55, 98, 240, 0.596);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h2 {
+  color: white;
+  font-weight: 200;
+}
+.header-link {
+  text-decoration: none;
+}
