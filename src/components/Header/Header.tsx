@@ -14,6 +14,7 @@ export const Header = () => {
     setAdd(inputVal);
   };
 
+  const handleDemo = () => {};
   const toggleSort = () => {
     setNewFirst(!newFirst);
   };
@@ -25,6 +26,9 @@ export const Header = () => {
           <strong>Video</strong> App
         </h2>
 
+        <Button active color="success" outline onClick={handleDemo}>
+          Demo videos
+        </Button>
         <Button active color="success" outline onClick={toggleSort}>
           {newFirst ? `Sort by: newest first` : `Sort by: oldest`}
         </Button>

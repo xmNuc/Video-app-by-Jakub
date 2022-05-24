@@ -16,8 +16,7 @@ import { videoId } from './YtParser';
 
 export const OnePost = () => {
   const [favorites, SetFavorites] = useState(false);
-  //   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<[] | any>([]);
 
   const handleFavorites = () => {
     SetFavorites(!favorites);
@@ -29,7 +28,7 @@ export const OnePost = () => {
       );
       const ytData = await res.json();
       setData(ytData.items);
-      // console.log(ytData.items);
+      console.log(ytData.items);
     })();
   }, []);
 
@@ -51,13 +50,8 @@ export const OnePost = () => {
             onClick={handleFavorites}
           />
 
-          <CardImg
-            alt="Card image cap"
-            src={data.snippet.thumbnails.standard.url}
-            top
-            width="100%"
-          />
-          <CardBody>
+          <CardImg alt="Card image cap" src={data.snippet.thumbnails.high.url} top width="100%" />
+          <CardBody className="d-flex flex-column">
             <CardTitle tag="h5">{data.snippet.title}</CardTitle>
             <CardSubtitle className="mb-2 text-muted" tag="h6">
               Card subtitle
@@ -66,8 +60,8 @@ export const OnePost = () => {
               This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.
             </CardText>
-            <Row>
-              <Button>Delete</Button>
+            <Row className="d-flex align-items-end mt-auto">
+              <Button className="d-flex justify-content-center">Delete</Button>
             </Row>
           </CardBody>
         </Card>

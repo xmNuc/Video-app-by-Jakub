@@ -13,13 +13,6 @@ export const ShowPosts = () => {
           <OnePost />
         </Row>
       </div>
-      {/* <div className="post-container">
-        {posts
-          .map((post) => (
-            <OnePost key={post.id} id={post.id} post={post} />
-          ))
-          .reverse()}
-      </div> */}
     </>
   );
 };
