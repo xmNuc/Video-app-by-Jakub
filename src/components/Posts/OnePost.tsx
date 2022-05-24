@@ -12,7 +12,7 @@ import {
 import './OnePost.css';
 import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
-import { vidId } from './YtParser';
+import { videoId } from './YtParser';
 
 export const OnePost = () => {
   const [favorites, SetFavorites] = useState(false);
@@ -25,7 +25,7 @@ export const OnePost = () => {
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=${vidId}&key=${process.env.REACT_APP_API_KEY}`
+        `https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=${videoId}&key=${process.env.REACT_APP_API_KEY}`
       );
       const ytData = await res.json();
       setData(ytData.items);
