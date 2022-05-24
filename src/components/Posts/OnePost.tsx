@@ -37,7 +37,7 @@ export const OnePost = () => {
     <h2>Loading data...</h2>;
   }
 
-  data.map((data: any) => console.log(data.snippet.title));
+  // data.map((data: any) => console.log(data.snippet.title));
 
   const handleOpenModal = () => {};
   return (
