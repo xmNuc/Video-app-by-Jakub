@@ -11,10 +11,6 @@ export const ShowPosts = () => {
       <div className="posts-wrap">
         <Row className="d-flex justify-content-center">
           <OnePost />
-          <OnePost />
-          <OnePost />
-          <OnePost />
-          <OnePost />
         </Row>
       </div>
       {/* <div className="post-container">
