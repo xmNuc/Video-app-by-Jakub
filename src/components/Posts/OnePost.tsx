@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
 import {
   Button,
   Card,
@@ -12,17 +12,37 @@ import {
 import './OnePost.css';
 import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
+import { videoid, vidId } from './YtParser';
 
 export const OnePost = () => {
   const [favorites, SetFavorites] = useState(false);
+  //   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<[]>();
 
   const handleFavorites = () => {
     SetFavorites(!favorites);
   };
-  const handlePostDetails = () => {};
+  //   console.log(videoid);
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(
+        `https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=${vidId}&key=${process.env.REACT_APP_API_KEY}`
+      );
+      const data = await res.json();
+      setData(data);
+      console.log(res);
+    })();
+  }, []);
+
+  if (!data) {
+    <h2>Loading data...</h2>;
+  }
+
+  const handleOpenModal = () => {};
   return (
     <>
-      <Card className="my-card">
+      <Card className="my-card" onClick={handleOpenModal}>
         <img
           className="favorites"
           src={favorites ? favYes : favNo}

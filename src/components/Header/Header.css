@@ -13,3 +13,7 @@ header h2 {
 .header-link {
   text-decoration: none;
 }
+
+.input-group {
+  width: 100%;
+}
