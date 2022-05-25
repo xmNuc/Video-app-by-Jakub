@@ -11,7 +11,7 @@ export const ShowPosts = () => {
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet&id=${vid}&key=${process.env.REACT_APP_API_KEY}`
+        `https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet,contentDetails,statistics&id=${vid}&key=${process.env.REACT_APP_API_KEY}`
       );
       const ytData = await res.json();
       setData(ytData.items);

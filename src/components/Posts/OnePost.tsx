@@ -9,9 +9,11 @@ import {
   CardTitle,
   Row,
 } from 'reactstrap';
-import './OnePost.css';
 import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
+import { displayTime } from '../../utils/time';
+
+import './OnePost.css';
 
 interface Props {
   id: string;
@@ -40,6 +42,8 @@ export const OnePost = (props: Props) => {
       : localStorage.removeItem('fav_id');
   };
 
+  const getTime = displayTime();
+
   const handleOpenModal = () => {};
 
   return (
@@ -59,15 +63,24 @@ export const OnePost = (props: Props) => {
           width="100%"
         />
         <CardBody className="d-flex flex-column">
-          <CardTitle tag="h5">title</CardTitle>
+          <CardTitle tag="h5">{props.data.snippet.title}</CardTitle>
           <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Card subtitle
+            👁 {props.data.statistics.viewCount} Vievs
+          </CardSubtitle>
+          <CardSubtitle className="mb-2 text-muted" tag="h6">
+            👍 {props.data.statistics.likeCount} Like count
+          </CardSubtitle>
+          <CardSubtitle className="mb-2 text-muted" tag="h6">
+            {/* Published at: {publishedAt} */}
+            Published at: {props.data.snippet.publishedAt}
+          </CardSubtitle>
+          <CardSubtitle className="mb-2 text-muted" tag="h6">
+            Added {getTime}
           </CardSubtitle>
           <CardText>
             This is a wider card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.
           </CardText>
-          <p>Today is: {new Date().toLocaleDateString()}</p>
           <Row className="d-flex align-items-end mt-auto">
             <Button
               className="d-flex justify-content-center"
