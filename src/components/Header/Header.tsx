@@ -21,8 +21,8 @@ export const Header = () => {
 
   return (
     <>
-      <header>
-        <h2>
+      <header className="fixed-top d-flex align-items-center justify-content-between">
+        <h2 className="d-flex justify-content-center">
           <strong>Video</strong> App
         </h2>
 
