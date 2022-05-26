@@ -3,12 +3,15 @@ import { AddContext } from '../../contexts/add.context';
 import { Row } from 'reactstrap';
 import { OnePost } from './OnePost';
 import { videoId } from './YtParser';
+import { Pagination } from '../Pagination/Pagination';
 import './ShowPosts.css';
 
 export const ShowPosts = () => {
   const { addDemo } = useContext(AddContext);
   const [data, setData] = useState<[] | any>([]);
   const [vid, setVid] = useState(videoId);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage] = useState(10);
 
   useEffect(() => {
     (async () => {
@@ -21,8 +24,13 @@ export const ShowPosts = () => {
   }, [vid]);
 
   useEffect(() => {
-    addDemo ? setVid(videoId) : setVid(videoId);
+    setVid(videoId);
   }, [addDemo]);
+
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const currentPost = data.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   if (!data) {
     <h2>Loading data...</h2>;
@@ -38,9 +46,12 @@ export const ShowPosts = () => {
     <>
       <div className="posts-wrap">
         <Row className="d-flex justify-content-center">
-          {data.map((data: any) => (
-            <OnePost key={data.id} id={data.id} data={data} removeItem={removeItem} />
+          {currentPost.map((data: any) => (
+            <>
+              <OnePost key={data.id} id={data.id} data={data} removeItem={removeItem} />
+            </>
           ))}
+          <Pagination postPerPage={postPerPage} totalPost={vid.length} paginate={paginate} />
         </Row>
       </div>
     </>

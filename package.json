@@ -1,6 +1,10 @@
 {
-  "name": "donkey_video",
-  "version": "0.1.0",
+  "name": "video-app",
+  "version": "1.0.0",
+  "author": "Jakub D <xmnuc@o2.pl> (http://thecatrix.eu)",
+  "description": "Video app - Youtube,Vimeo?",
+  "license": "CC-BY-3.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -13,7 +17,7 @@
     "bootstrap": "^5.1.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^2.1.8",
     "reactstrap": "^9.0.2",
     "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
