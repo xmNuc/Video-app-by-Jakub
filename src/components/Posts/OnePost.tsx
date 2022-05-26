@@ -71,8 +71,7 @@ export const OnePost = (props: Props) => {
             👍 {props.data.statistics.likeCount} Like count
           </CardSubtitle>
           <CardSubtitle className="mb-2 text-muted" tag="h6">
-            {/* Published at: {publishedAt} */}
-            Published at: {props.data.snippet.publishedAt}
+            Published at: {props.data.snippet.publishedAt.replace('T', ' ').replace('Z', '')}
           </CardSubtitle>
           <CardSubtitle className="mb-2 text-muted" tag="h6">
             Added {getTime}
