@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Input, InputGroup } from 'reactstrap';
 import './Header.css';
 
 export const Header = () => {
-  const { add, setAdd } = useContext(AddContext);
+  const { add, setAdd, addDemo, setAddDemo } = useContext(AddContext);
   const [inputVal, setInputVal] = useState(add);
   const [newFirst, setNewFirst] = useState(true);
 
@@ -14,7 +14,11 @@ export const Header = () => {
     setAdd(inputVal);
   };
 
-  const handleDemo = () => {};
+  const setDemoActive = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setAddDemo(!addDemo);
+  };
+
   const toggleSort = () => {
     setNewFirst(!newFirst);
   };
@@ -26,7 +30,7 @@ export const Header = () => {
           <strong>Video</strong> App
         </h2>
 
-        <Button active color="success" outline onClick={handleDemo}>
+        <Button active color="success" outline onClick={setDemoActive}>
           Demo videos
         </Button>
         <Button active color="success" outline onClick={toggleSort}>

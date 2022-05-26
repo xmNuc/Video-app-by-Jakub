@@ -1,5 +1,5 @@
 .main-wrap {
-  min-height: calc(100vh - 90px);
+  min-height: 100vh;
   padding-top: 100px;
   background-color: #8ec5fc;
   background-image: -webkit-linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);

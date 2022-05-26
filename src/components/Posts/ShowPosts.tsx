@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AddContext } from '../../contexts/add.context';
 import { Row } from 'reactstrap';
 import { OnePost } from './OnePost';
 import { videoId } from './YtParser';
 import './ShowPosts.css';
 
 export const ShowPosts = () => {
+  const { addDemo } = useContext(AddContext);
   const [data, setData] = useState<[] | any>([]);
   const [vid, setVid] = useState(videoId);
 
@@ -18,10 +20,13 @@ export const ShowPosts = () => {
     })();
   }, [vid]);
 
+  useEffect(() => {
+    addDemo ? setVid(videoId) : setVid(videoId);
+  }, [addDemo]);
+
   if (!data) {
     <h2>Loading data...</h2>;
   }
-
   // data.map((data: any) => console.log(data.id));
 
   const removeItem = (id: string) => {
