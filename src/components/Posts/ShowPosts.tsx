@@ -46,7 +46,6 @@ export const ShowPosts = () => {
   // console.log(published.sort((a: any, b: any) => (a > b ? 1 : -1)));
 
   const removeItem = (id: string) => {
-    console.log(`Remove item  ${id}`);
     setVid(vid.filter((one: any) => one !== id));
   };
 
@@ -54,8 +53,8 @@ export const ShowPosts = () => {
     <>
       <div className="posts-wrap">
         <Row className="d-flex justify-content-center">
-          {currentPost.map((data: any) => (
-            <OnePost key={data.id} id={data.id} data={data} removeItem={removeItem} />
+          {currentPost.map((data: any, index: number) => (
+            <OnePost key={data.id + index} id={data.id} data={data} removeItem={removeItem} />
           ))}
           <Pagination postPerPage={postPerPage} totalPost={vid.length} paginate={paginate} />
         </Row>
