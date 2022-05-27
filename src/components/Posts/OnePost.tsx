@@ -11,8 +11,6 @@ import {
 } from 'reactstrap';
 import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
-import { displayTime } from '../../utils/time';
-
 import './OnePost.css';
 
 interface Props {
@@ -41,8 +39,6 @@ export const OnePost = (props: Props) => {
       ? localStorage.setItem('fav_id', JSON.stringify(id))
       : localStorage.removeItem('fav_id');
   };
-
-  const getTime = displayTime();
 
   const handleOpenModal = () => {};
 
@@ -73,14 +69,8 @@ export const OnePost = (props: Props) => {
           <CardSubtitle className="mb-2 text-muted" tag="h6">
             Published at: {props.data.snippet.publishedAt.replace('T', ' ').replace('Z', '')}
           </CardSubtitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Added {getTime}
-          </CardSubtitle>
-          <CardText>
-            This is a wider card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.
-          </CardText>
           <Row className="d-flex align-items-end mt-auto">
+            <Button className="d-flex justify-content-center mb-3">Play Video</Button>
             <Button
               className="d-flex justify-content-center"
               onClick={() => props.removeItem(props.data.id)}

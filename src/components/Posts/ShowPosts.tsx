@@ -35,7 +35,15 @@ export const ShowPosts = () => {
   if (!data) {
     <h2>Loading data...</h2>;
   }
-  // data.map((data: any) => console.log(data.id));
+
+  // console.log(
+  //   currentPost
+  //     .map((asd: any) => asd.snippet.publishedAt)
+  //     .sort((a: any, b: any) => (a < b ? 1 : -1))
+  // );
+
+  // const published = data.map((asd: any) => asd.snippet.publishedAt);
+  // console.log(published.sort((a: any, b: any) => (a > b ? 1 : -1)));
 
   const removeItem = (id: string) => {
     console.log(`Remove item  ${id}`);
@@ -47,9 +55,7 @@ export const ShowPosts = () => {
       <div className="posts-wrap">
         <Row className="d-flex justify-content-center">
           {currentPost.map((data: any) => (
-            <>
-              <OnePost key={data.id} id={data.id} data={data} removeItem={removeItem} />
-            </>
+            <OnePost key={data.id} id={data.id} data={data} removeItem={removeItem} />
           ))}
           <Pagination postPerPage={postPerPage} totalPost={vid.length} paginate={paginate} />
         </Row>
