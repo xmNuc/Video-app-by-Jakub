@@ -1,0 +1,13 @@
+body {
+  padding-right: 0 !important;
+}
+
+.modal-dialog {
+  padding-top: 20vh;
+}
+.modal-content {
+  width: 640px;
+  height: 480px;
+  background: none;
+  border: none;
+}

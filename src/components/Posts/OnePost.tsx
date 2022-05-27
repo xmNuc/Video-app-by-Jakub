@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  Card,
-  CardBody,
-  CardImg,
-  CardSubtitle,
-  CardText,
-  CardTitle,
-  Row,
-} from 'reactstrap';
+import { Button, Card, CardBody, CardImg, CardSubtitle, CardTitle, Row } from 'reactstrap';
 import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
 import './OnePost.css';
+import { VideoModal } from '../VideoModal/VideoModal';
 
 interface Props {
   id: string;
@@ -20,7 +12,12 @@ interface Props {
 }
 
 export const OnePost = (props: Props) => {
+  const [modal, setModal] = useState(false);
   const [favorites, setFavorites] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -40,11 +37,9 @@ export const OnePost = (props: Props) => {
       : localStorage.removeItem('fav_id');
   };
 
-  const handleOpenModal = () => {};
-
   return (
     <>
-      <Card className="my-card" onClick={handleOpenModal}>
+      <Card className="my-card">
         <img
           className="favorites"
           src={favorites ? favYes : favNo}
@@ -52,12 +47,15 @@ export const OnePost = (props: Props) => {
           onClick={() => handleFavorites(props.id)}
         />
 
-        <CardImg
-          alt="Card image cap"
-          src={props.data.snippet.thumbnails.high.url}
-          top
-          width="100%"
-        />
+        <div>
+          <CardImg
+            alt="Card image cap"
+            src={props.data.snippet.thumbnails.high.url}
+            top
+            width="100%"
+            onClick={toggleModal}
+          />
+        </div>
         <CardBody className="d-flex flex-column">
           <CardTitle tag="h5">{props.data.snippet.title}</CardTitle>
           <CardSubtitle className="mb-2 text-muted" tag="h6">
@@ -70,7 +68,10 @@ export const OnePost = (props: Props) => {
             Published at: {props.data.snippet.publishedAt.replace('T', ' ').replace('Z', '')}
           </CardSubtitle>
           <Row className="d-flex align-items-end mt-auto">
-            <Button className="d-flex justify-content-center mb-3">Play Video</Button>
+            <Button className="d-flex justify-content-center mb-3" onClick={toggleModal}>
+              Play Video
+            </Button>
+            <VideoModal vid={props.data.id} toggleModal={toggleModal} modal={modal} />
             <Button
               className="d-flex justify-content-center"
               onClick={() => props.removeItem(props.data.id)}
