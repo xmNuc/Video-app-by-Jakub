@@ -4,9 +4,10 @@ import { Button, Form, FormGroup, Input, InputGroup } from 'reactstrap';
 import './Header.css';
 
 export const Header = () => {
-  const { add, setAdd, addDemo, setAddDemo, sortByDate, setSortByDate } = useContext(AddContext);
+  const { add, setAdd, addDemo, setAddDemo, sortByDate, setSortByDate, deleteAll, setDeleteAll } =
+    useContext(AddContext);
   const [inputVal, setInputVal] = useState(add);
-  const [newFirst, setNewFirst] = useState(true);
+  const [newFirst, setNewFirst] = useState(sortByDate);
 
   const setUrlLocalState = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -14,15 +15,19 @@ export const Header = () => {
     setAdd(inputVal);
   };
 
-  const setDemoActive = (e: SyntheticEvent) => {
+  const handleDemoActive = (e: SyntheticEvent) => {
     e.preventDefault();
     setAddDemo(!addDemo);
   };
 
-  const toggleSort = (e: SyntheticEvent) => {
+  const handleSort = (e: SyntheticEvent) => {
     e.preventDefault();
     setSortByDate(!sortByDate);
     setNewFirst(!newFirst);
+  };
+  const handleDeleteAll = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setDeleteAll(true);
   };
 
   return (
@@ -32,11 +37,14 @@ export const Header = () => {
           <strong>Video</strong> App
         </h2>
 
-        <Button active color="success" outline onClick={setDemoActive}>
+        <Button active color="success" outline onClick={handleDemoActive}>
           Demo videos
         </Button>
-        <Button active color="success" outline onClick={toggleSort}>
-          {newFirst ? `Sort by: newest first` : `Sort by: oldest`}
+        <Button active color="success" outline onClick={handleSort}>
+          {newFirst ? `Sort by: oldest` : `Sort by: newest first`}
+        </Button>
+        <Button active color="danger" outline onClick={handleDeleteAll}>
+          Delete All
         </Button>
         <Form className="pt-3" onSubmit={setUrlLocalState}>
           <FormGroup>

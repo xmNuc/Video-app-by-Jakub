@@ -7,9 +7,21 @@ export const App = () => {
   const [add, setAdd] = useState('');
   const [addDemo, setAddDemo] = useState(false);
   const [sortByDate, setSortByDate] = useState(false);
+  const [deleteAll, setDeleteAll] = useState(false);
   return (
     <>
-      <AddContext.Provider value={{ add, setAdd, addDemo, setAddDemo, sortByDate, setSortByDate }}>
+      <AddContext.Provider
+        value={{
+          add,
+          setAdd,
+          addDemo,
+          setAddDemo,
+          sortByDate,
+          setSortByDate,
+          deleteAll,
+          setDeleteAll,
+        }}
+      >
         <Header />
         <Main />
       </AddContext.Provider>

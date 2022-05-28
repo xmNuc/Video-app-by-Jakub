@@ -23,17 +23,3 @@ export const Vimeoo = () => {
 
   return <></>;
 };
-
-// const [thumbNails, setThumbNails] = useState({
-//   data: [],
-//     });
-// (async () => {
-//       let fetchedResult = await Promise.all(
-//         data.map((videoId) => fetch(`http://vimeo.com/api/v2/video/${data[0]}.json`))
-//       );
-//       fetchedResult.map((data) =>
-//         setThumbNails({
-//           data: result,
-//         })
-//       );
-//     })();

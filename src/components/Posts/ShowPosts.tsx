@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AddContext } from '../../contexts/add.context';
 import { Row } from 'reactstrap';
 import { OnePost } from './OnePost';
@@ -7,11 +7,13 @@ import { Pagination } from '../Pagination/Pagination';
 import './ShowPosts.css';
 
 export const ShowPosts = () => {
-  const { addDemo, sortByDate } = useContext(AddContext);
+  const { addDemo, sortByDate, deleteAll, setDeleteAll } = useContext(AddContext);
   const [data, setData] = useState<any>([]);
   const [vid, setVid] = useState(videoId);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(10);
+
+  console.log(vid);
 
   useEffect(() => {
     (async () => {
@@ -28,17 +30,26 @@ export const ShowPosts = () => {
   }, [addDemo]);
 
   useEffect(() => {
+    deleteAll && setVid(['pusto']);
+    setDeleteAll(false);
+    console.log(deleteAll);
+  }, [deleteAll]);
+
+  const sort = () =>
     sortByDate
       ? setData(
           data
-            .map((asd: any) => asd)
+            .map((arr: any) => arr)
             .sort((a: any, b: any) => (a.snippet.publishedAt < b.snippet.publishedAt ? 1 : -1))
         )
       : setData(
           data
-            .map((asd: any) => asd)
+            .map((arr: any) => arr)
             .sort((a: any, b: any) => (a.snippet.publishedAt > b.snippet.publishedAt ? 1 : -1))
         );
+
+  useEffect(() => {
+    sort();
   }, [sortByDate]);
 
   const indexOfLastPost = currentPage * postPerPage;
@@ -49,12 +60,6 @@ export const ShowPosts = () => {
   if (!data) {
     <h2>Loading data...</h2>;
   }
-
-  // console.log(
-  //   data.map((asd: any) => asd.snippet.publishedAt).sort((a: any, b: any) => (a < b ? 1 : -1)));
-
-  // const published = data.map((asd: any) => asd.snippet.publishedAt);
-  // console.log(published.sort((a: any, b: any) => (a > b ? 1 : -1)));
 
   const removeItem = (id: string) => {
     setVid(vid.filter((one: string) => one !== id));
