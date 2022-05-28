@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AddContext } from '../../contexts/add.context';
 import { Row } from 'reactstrap';
 import { OnePost } from './OnePost';
@@ -12,8 +12,6 @@ export const ShowPosts = () => {
   const [vid, setVid] = useState(videoId);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(10);
-
-  console.log(vid);
 
   useEffect(() => {
     (async () => {
@@ -30,9 +28,9 @@ export const ShowPosts = () => {
   }, [addDemo]);
 
   useEffect(() => {
-    deleteAll && setVid(['pusto']);
+    deleteAll && setVid([]);
     setDeleteAll(false);
-    console.log(deleteAll);
+    // console.log(deleteAll);
   }, [deleteAll]);
 
   const sort = () =>
