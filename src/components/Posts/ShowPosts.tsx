@@ -7,8 +7,8 @@ import { Pagination } from '../Pagination/Pagination';
 import './ShowPosts.css';
 
 export const ShowPosts = () => {
-  const { addDemo } = useContext(AddContext);
-  const [data, setData] = useState<[] | any>([]);
+  const { addDemo, sortByDate } = useContext(AddContext);
+  const [data, setData] = useState<any>([]);
   const [vid, setVid] = useState(videoId);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(10);
@@ -16,7 +16,7 @@ export const ShowPosts = () => {
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        `https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet,contentDetails,statistics&id=${vid}&key=${process.env.REACT_APP_API_KEY}`
+        `https://www.googleapis.com/youtube/v3/videos?part=id%2C+snippet,contentDetails,statistics&id=${vid}&key=${process.env.REACT_APP_YT_API_KEY}`
       );
       const ytData = await res.json();
       setData(ytData.items);
@@ -26,6 +26,20 @@ export const ShowPosts = () => {
   useEffect(() => {
     setVid(videoId);
   }, [addDemo]);
+
+  useEffect(() => {
+    sortByDate
+      ? setData(
+          data
+            .map((asd: any) => asd)
+            .sort((a: any, b: any) => (a.snippet.publishedAt < b.snippet.publishedAt ? 1 : -1))
+        )
+      : setData(
+          data
+            .map((asd: any) => asd)
+            .sort((a: any, b: any) => (a.snippet.publishedAt > b.snippet.publishedAt ? 1 : -1))
+        );
+  }, [sortByDate]);
 
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
@@ -37,16 +51,13 @@ export const ShowPosts = () => {
   }
 
   // console.log(
-  //   currentPost
-  //     .map((asd: any) => asd.snippet.publishedAt)
-  //     .sort((a: any, b: any) => (a < b ? 1 : -1))
-  // );
+  //   data.map((asd: any) => asd.snippet.publishedAt).sort((a: any, b: any) => (a < b ? 1 : -1)));
 
   // const published = data.map((asd: any) => asd.snippet.publishedAt);
   // console.log(published.sort((a: any, b: any) => (a > b ? 1 : -1)));
 
   const removeItem = (id: string) => {
-    setVid(vid.filter((one: any) => one !== id));
+    setVid(vid.filter((one: string) => one !== id));
   };
 
   return (
