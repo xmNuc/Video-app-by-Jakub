@@ -22,6 +22,7 @@
     "react-scripts": "^2.1.8",
     "reactstrap": "^9.0.2",
     "typescript": "^4.6.4",
+    "vimeo": "^2.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@types/bootstrap": "^5.1.12"
+    "@types/bootstrap": "^5.1.12",
+    "@types/vimeo": "^2.1.4"
   }
 }

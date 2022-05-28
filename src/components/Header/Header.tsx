@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Input, InputGroup } from 'reactstrap';
 import './Header.css';
 
 export const Header = () => {
-  const { add, setAdd, addDemo, setAddDemo } = useContext(AddContext);
+  const { add, setAdd, addDemo, setAddDemo, sortByDate, setSortByDate } = useContext(AddContext);
   const [inputVal, setInputVal] = useState(add);
   const [newFirst, setNewFirst] = useState(true);
 
@@ -19,7 +19,9 @@ export const Header = () => {
     setAddDemo(!addDemo);
   };
 
-  const toggleSort = () => {
+  const toggleSort = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setSortByDate(!sortByDate);
     setNewFirst(!newFirst);
   };
 

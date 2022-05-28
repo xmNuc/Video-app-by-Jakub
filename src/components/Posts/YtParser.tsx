@@ -4,4 +4,4 @@ import { demoDb } from '../../utils/demoDb';
 const videoObj = demoDb.map((item: any) => getVideoId(item));
 export const videoId = videoObj.map((item: any) => item.id);
 
-console.log(videoId);
+// console.log(videoId);
