@@ -4,7 +4,7 @@ import { AddContext } from './contexts/add.context';
 import { Main } from './components/Main/Main';
 
 export const App = () => {
-  const [add, setAdd] = useState('');
+  const [addUrl, setAddUrl] = useState('');
   const [addDemo, setAddDemo] = useState(false);
   const [showFavirites, setShowFavirites] = useState(false);
   const [sortByDate, setSortByDate] = useState(false);
@@ -13,8 +13,8 @@ export const App = () => {
     <>
       <AddContext.Provider
         value={{
-          add,
-          setAdd,
+          addUrl,
+          setAddUrl,
           addDemo,
           showFavirites,
           setShowFavirites,

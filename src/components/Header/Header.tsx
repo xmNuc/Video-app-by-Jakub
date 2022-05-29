@@ -5,13 +5,13 @@ import { Buttons } from './Buttons';
 import './Header.css';
 
 export const Header = () => {
-  const { add, setAdd } = useContext(AddContext);
-  const [inputVal, setInputVal] = useState(add);
+  const { addUrl, setAddUrl } = useContext(AddContext);
+  const [inputVal, setInputVal] = useState(addUrl);
 
   const setUrlLocalState = (e: SyntheticEvent) => {
     e.preventDefault();
     console.log(inputVal);
-    setAdd(inputVal);
+    setAddUrl(inputVal);
   };
 
   return (

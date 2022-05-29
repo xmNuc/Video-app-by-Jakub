@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 export const AddContext = createContext({
-  add: '',
-  setAdd: (data: string) => {},
+  addUrl: '',
+  setAddUrl: (data: string) => {},
   addDemo: false,
   setAddDemo: (data: boolean) => {},
   showFavirites: false,

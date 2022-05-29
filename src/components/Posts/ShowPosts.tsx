@@ -8,7 +8,8 @@ import useLocalStorage from '../../hooks/useLoclalStorage';
 import './ShowPosts.css';
 
 export const ShowPosts = () => {
-  const { addDemo, sortByDate, deleteAll, setDeleteAll, showFavirites } = useContext(AddContext);
+  const { addUrl, addDemo, sortByDate, deleteAll, setDeleteAll, showFavirites } =
+    useContext(AddContext);
   const [data, setData] = useState<any>([]);
   const [vid, setVid] = useState([]);
   const [localStorageVideos, setLocalStorageVideos] = useLocalStorage('allVideos', vid);
@@ -28,20 +29,6 @@ export const ShowPosts = () => {
       .sort((a: any, b: any) => (a.snippet.publishedAt < b.snippet.publishedAt ? 1 : -1));
     sortByDate ? setData(newData) : setData(newData.reverse());
   };
-
-  // const sort = () => {
-  //   sortByDate
-  //     ? setData(
-  //         data
-  //           .map((arr: string[]) => arr)
-  //           .sort((a: any, b: any) => (a.snippet.publishedAt < b.snippet.publishedAt ? 1 : -1))
-  //       )
-  //     : setData(
-  //         data
-  //           .map((arr: string[]) => arr)
-  //           .sort((a: any, b: any) => (a.snippet.publishedAt > b.snippet.publishedAt ? 1 : -1))
-  //       );
-  // };
 
   useEffect(() => {
     (async () => {
@@ -72,13 +59,17 @@ export const ShowPosts = () => {
     sort();
   }, [sortByDate]);
 
+  // useEffect(() => {
+  //   const nevUrl: any = [...myFav, id];
+  //   setMyFav(favList);
+  // }, [sortByDate]);
+
   useEffect(() => {
-    localStorageVideos === null ? setVid(videoId) : setVid(localStorageVideos);
+    typeof localStorageVideos !== 'undefined' && localStorageVideos.length > 0
+      ? setVid(localStorageVideos)
+      : setVid(videoId);
   }, []);
 
-  if (!data) {
-    <h2 className="d-flex justi">Loading data...</h2>;
-  }
   const handleFavorites = (id: string) => {
     const favList: any = [...myFav, id];
     setMyFav(favList);
@@ -91,7 +82,9 @@ export const ShowPosts = () => {
   const removeItem = (id: string) => {
     setVid(vid.filter((one: string) => one !== id));
   };
-
+  if (!data) {
+    <h2 className="w-50 mx-auto">Loading data...</h2>;
+  }
   return (
     <>
       <div className="posts-wrap">

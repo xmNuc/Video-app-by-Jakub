@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Card, CardBody, CardImg, CardSubtitle, CardTitle, Row } from 'reactstrap';
 import { VideoModal } from '../VideoModal/VideoModal';
 import favYes from '../../img/favyes.png';
