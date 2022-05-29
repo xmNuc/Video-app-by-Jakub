@@ -77,5 +77,3 @@ export const OnePost = (props: Props) => {
     </>
   );
 };
-
-// src="https://picsum.photos/318/180"
