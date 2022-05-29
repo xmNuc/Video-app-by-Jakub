@@ -6,6 +6,7 @@ import { Main } from './components/Main/Main';
 export const App = () => {
   const [add, setAdd] = useState('');
   const [addDemo, setAddDemo] = useState(false);
+  const [showFavirites, setShowFavirites] = useState(false);
   const [sortByDate, setSortByDate] = useState(false);
   const [deleteAll, setDeleteAll] = useState(false);
   return (
@@ -15,6 +16,8 @@ export const App = () => {
           add,
           setAdd,
           addDemo,
+          showFavirites,
+          setShowFavirites,
           setAddDemo,
           sortByDate,
           setSortByDate,

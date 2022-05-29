@@ -4,8 +4,17 @@ import { Button, Form, FormGroup, Input, InputGroup } from 'reactstrap';
 import './Header.css';
 
 export const Header = () => {
-  const { add, setAdd, addDemo, setAddDemo, sortByDate, setSortByDate, deleteAll, setDeleteAll } =
-    useContext(AddContext);
+  const {
+    add,
+    setAdd,
+    addDemo,
+    setAddDemo,
+    sortByDate,
+    setSortByDate,
+    setDeleteAll,
+    showFavirites,
+    setShowFavirites,
+  } = useContext(AddContext);
   const [inputVal, setInputVal] = useState(add);
   const [newFirst, setNewFirst] = useState(sortByDate);
 
@@ -18,6 +27,10 @@ export const Header = () => {
   const handleDemoActive = (e: SyntheticEvent) => {
     e.preventDefault();
     setAddDemo(!addDemo);
+  };
+  const handleShowFavirites = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setShowFavirites(!showFavirites);
   };
 
   const handleSort = (e: SyntheticEvent) => {
@@ -32,21 +45,25 @@ export const Header = () => {
 
   return (
     <>
-      <header className="fixed-top d-flex align-items-center justify-content-between">
-        <h2 className="d-flex justify-content-center">
-          <strong>Video</strong> App
+      <header className="fixed-top d-flex align-items-center justify-content-between row">
+        <h2 className="d-flex justify-content-center col-2">
+          <strong>Video</strong> App <p>by Jakub</p>
         </h2>
-
-        <Button active color="success" outline onClick={handleDemoActive}>
-          Demo videos
-        </Button>
-        <Button active color="success" outline onClick={handleSort}>
-          {newFirst ? `Sort by: oldest` : `Sort by: newest first`}
-        </Button>
-        <Button active color="danger" outline onClick={handleDeleteAll}>
-          Delete All
-        </Button>
-        <Form className="pt-3" onSubmit={setUrlLocalState}>
+        <div className="col-6">
+          <Button className="mx-1" active color="success" outline onClick={handleDemoActive}>
+            Demo videos
+          </Button>
+          <Button className="mx-1" active color="success" outline onClick={handleShowFavirites}>
+            Show Favorites
+          </Button>
+          <Button className="mx-1" active color="success" outline onClick={handleSort}>
+            {newFirst ? `Sort by: oldest` : `Sort by: newest first`}
+          </Button>
+          <Button className="mx-5  " active color="danger" outline onClick={handleDeleteAll}>
+            Delete All
+          </Button>
+        </div>
+        <Form className="pt-3 col" onSubmit={setUrlLocalState}>
           <FormGroup>
             <InputGroup>
               <Input

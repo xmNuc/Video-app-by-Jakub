@@ -18,7 +18,7 @@ export const Pagination = (props: Props) => {
       <div className="pagination d-flex justify-content-center my-5">
         {pageNumbers.map((pageNumber, index) => (
           <li key={pageNumber + index} className="page-item p-1">
-            <a onClick={() => props.paginate(pageNumber)} href="!#" className="page-link">
+            <a onClick={() => props.paginate(pageNumber)} className="page-link">
               {pageNumber}
             </a>
           </li>

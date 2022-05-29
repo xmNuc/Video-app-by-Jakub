@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, CardBody, CardImg, CardSubtitle, CardTitle, Row } from 'reactstrap';
+import { VideoModal } from '../VideoModal/VideoModal';
 import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
 import './OnePost.css';
-import { VideoModal } from '../VideoModal/VideoModal';
 
 interface Props {
-  id: string | any;
+  id: string | string[];
   data: any;
   removeItem: boolean | any;
   myFav: any;
   setMyFav: any;
+  handleFavorites: any;
+  handleRemoveFavorites: any;
 }
 
 export const OnePost = (props: Props) => {
@@ -20,25 +22,18 @@ export const OnePost = (props: Props) => {
     setModal(!modal);
   };
 
-  const handleFavorites = (id: string) => {
-    props.setMyFav([...props.myFav, id]);
-  };
-  // const handleFavorites = (id: string) => {
-  //   props.setMyFav([...props.myFav, { id }]);
-  // };
-  {
-    console.log(props.myFav.map((arr: string) => arr === props.id));
-  }
   return (
     <>
       <Card className="my-card">
         <img
           className="favorites"
-          src={props.myFav.map((arr: string) => arr === props.id) ? favYes : favNo}
-          // src={props.myFav === props.id ? favYes : favNo}
-          // src={favorites ? favYes : favNo}
+          src={props.myFav.indexOf(props.id) > -1 ? favYes : favNo}
           alt="favorites"
-          onClick={() => handleFavorites(props.data.id)}
+          onClick={
+            props.myFav.indexOf(props.id) > -1
+              ? () => props.handleRemoveFavorites(props.id)
+              : () => props.handleFavorites(props.id)
+          }
         />
 
         <div>
@@ -55,7 +50,11 @@ export const OnePost = (props: Props) => {
           <CardSubtitle className="mb-2 text-muted" tag="h6">
             👁 {props.data.statistics.viewCount} Vievs
           </CardSubtitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
+          <CardSubtitle
+            className="mb-2 text-muted"
+            tag="h6"
+            onClick={() => props.handleRemoveFavorites(props.id)}
+          >
             👍 {props.data.statistics.likeCount} Like count
           </CardSubtitle>
           <CardSubtitle className="mb-2 text-muted" tag="h6">
