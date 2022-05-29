@@ -10,7 +10,7 @@ export const Header = () => {
 
   const setUrlLocalState = (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(`setUrlLocalState`);
+    console.log(inputVal);
     setAdd(inputVal);
   };
 
@@ -22,18 +22,6 @@ export const Header = () => {
         </h2>
         <div className="col-6">
           <Buttons />
-          {/* <Button className="mx-1" active color="success" outline onClick={handleDemoActive}>
-            Demo videos
-          </Button>
-          <Button className="mx-1" active color="success" outline onClick={handleShowFavirites}>
-            {showFavirites ? `Show All` : `Show Favorites`}
-          </Button>
-          <Button className="mx-1" active color="success" outline onClick={handleSort}>
-            {newFirst ? `Sort by: oldest` : `Sort by: newest first`}
-          </Button>
-          <Button className="mx-5  " active color="danger" outline onClick={handleDeleteAll}>
-            Delete All
-          </Button> */}
         </div>
         <Form className="pt-3 col" onSubmit={setUrlLocalState}>
           <FormGroup>

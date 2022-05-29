@@ -22,18 +22,26 @@ export const ShowPosts = () => {
   const currentPost = data.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  const sort = () =>
-    sortByDate
-      ? setData(
-          data
-            .map((arr: string[]) => arr)
-            .sort((a: any, b: any) => (a.snippet.publishedAt < b.snippet.publishedAt ? 1 : -1))
-        )
-      : setData(
-          data
-            .map((arr: string[]) => arr)
-            .sort((a: any, b: any) => (a.snippet.publishedAt > b.snippet.publishedAt ? 1 : -1))
-        );
+  const sort = () => {
+    const newData = data
+      .map((arr: string[]) => arr)
+      .sort((a: any, b: any) => (a.snippet.publishedAt < b.snippet.publishedAt ? 1 : -1));
+    sortByDate ? setData(newData) : setData(newData.reverse());
+  };
+
+  // const sort = () => {
+  //   sortByDate
+  //     ? setData(
+  //         data
+  //           .map((arr: string[]) => arr)
+  //           .sort((a: any, b: any) => (a.snippet.publishedAt < b.snippet.publishedAt ? 1 : -1))
+  //       )
+  //     : setData(
+  //         data
+  //           .map((arr: string[]) => arr)
+  //           .sort((a: any, b: any) => (a.snippet.publishedAt > b.snippet.publishedAt ? 1 : -1))
+  //       );
+  // };
 
   useEffect(() => {
     (async () => {
@@ -69,7 +77,7 @@ export const ShowPosts = () => {
   }, []);
 
   if (!data) {
-    <h2>Loading data...</h2>;
+    <h2 className="d-flex justi">Loading data...</h2>;
   }
   const handleFavorites = (id: string) => {
     const favList: any = [...myFav, id];
