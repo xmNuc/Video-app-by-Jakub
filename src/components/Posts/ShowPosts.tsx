@@ -10,8 +10,10 @@ import './ShowPosts.css';
 export const ShowPosts = () => {
   const { addDemo, sortByDate, deleteAll, setDeleteAll, showFavirites } = useContext(AddContext);
   const [data, setData] = useState<any>([]);
-  const [vid, setVid] = useState(videoId);
+  const [vid, setVid] = useState([]);
+  const [localStorageVideos, setLocalStorageVideos] = useLocalStorage('allVideos', vid);
   const [myFav, setMyFav] = useLocalStorage('favorites', []);
+  const [tempState, setTempState] = useLocalStorage('tempVideos', []);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(10);
 
@@ -41,13 +43,16 @@ export const ShowPosts = () => {
       const ytData = await res.json();
       setData(ytData.items);
     })();
+    setLocalStorageVideos(vid);
   }, [vid]);
 
   useEffect(() => {
     setVid(videoId);
   }, [addDemo]);
+
   useEffect(() => {
-    setVid(myFav);
+    setTempState(vid);
+    showFavirites ? setVid(myFav) : setVid(tempState);
   }, [showFavirites]);
 
   useEffect(() => {
@@ -58,6 +63,10 @@ export const ShowPosts = () => {
   useEffect(() => {
     sort();
   }, [sortByDate]);
+
+  useEffect(() => {
+    localStorageVideos === null ? setVid(videoId) : setVid(localStorageVideos);
+  }, []);
 
   if (!data) {
     <h2>Loading data...</h2>;
