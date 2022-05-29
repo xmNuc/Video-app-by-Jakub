@@ -4,43 +4,39 @@ import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
 import './OnePost.css';
 import { VideoModal } from '../VideoModal/VideoModal';
-import store from 'store2';
 
 interface Props {
   id: string | any;
   data: any;
   removeItem: boolean | any;
+  myFav: any;
+  setMyFav: any;
 }
 
 export const OnePost = (props: Props) => {
   const [modal, setModal] = useState(false);
-  const [favorites, setFavorites] = useState(false);
-  const [myFav, setMyFav] = useState<any>();
 
   const toggleModal = () => {
     setModal(!modal);
   };
 
   const handleFavorites = (id: string) => {
-    setMyFav({ ...myFav, id: { id } });
+    props.setMyFav([...props.myFav, id]);
   };
-
-  useEffect(() => {
-    const data = store.get('favorites') !== null && setMyFav(store.get('favorites'));
-    console.log(data);
-  }, []);
-
-  useEffect(() => {
-    myFav && store.set('favorites', myFav);
-  }, [myFav]);
-
+  // const handleFavorites = (id: string) => {
+  //   props.setMyFav([...props.myFav, { id }]);
+  // };
+  {
+    console.log(props.myFav.map((arr: string) => arr === props.id));
+  }
   return (
     <>
       <Card className="my-card">
         <img
           className="favorites"
-          // src={myFav.id === props.id ? favYes : favNo}
-          src={favorites ? favYes : favNo}
+          src={props.myFav.map((arr: string) => arr === props.id) ? favYes : favNo}
+          // src={props.myFav === props.id ? favYes : favNo}
+          // src={favorites ? favYes : favNo}
           alt="favorites"
           onClick={() => handleFavorites(props.data.id)}
         />

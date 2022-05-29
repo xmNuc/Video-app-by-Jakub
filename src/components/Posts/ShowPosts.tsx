@@ -5,6 +5,7 @@ import { OnePost } from './OnePost';
 import { videoId } from './YtParser';
 import { Pagination } from '../Pagination/Pagination';
 import './ShowPosts.css';
+import useLocalStorage from '../../hooks/useLoclalStorage';
 
 export const ShowPosts = () => {
   const { addDemo, sortByDate, deleteAll, setDeleteAll } = useContext(AddContext);
@@ -12,6 +13,13 @@ export const ShowPosts = () => {
   const [vid, setVid] = useState(videoId);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(10);
+  const [myFav, setMyFav] = useLocalStorage('favorites', []);
+  console.log(myFav);
+
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+  const currentPost = data.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     (async () => {
@@ -50,11 +58,6 @@ export const ShowPosts = () => {
     sort();
   }, [sortByDate]);
 
-  const indexOfLastPost = currentPage * postPerPage;
-  const indexOfFirstPost = indexOfLastPost - postPerPage;
-  const currentPost = data.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
   if (!data) {
     <h2>Loading data...</h2>;
   }
@@ -68,7 +71,14 @@ export const ShowPosts = () => {
       <div className="posts-wrap">
         <Row className="d-flex justify-content-center">
           {currentPost.map((data: any, index: number) => (
-            <OnePost key={data.id + index} id={data.id} data={data} removeItem={removeItem} />
+            <OnePost
+              key={data.id + index}
+              id={data.id}
+              data={data}
+              removeItem={removeItem}
+              myFav={myFav}
+              setMyFav={setMyFav}
+            />
           ))}
           <Pagination postPerPage={postPerPage} totalPost={vid.length} paginate={paginate} />
         </Row>
