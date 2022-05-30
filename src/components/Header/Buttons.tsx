@@ -38,16 +38,16 @@ export const Buttons = () => {
   };
   return (
     <>
-      <Button className="mx-1" active color="success" outline onClick={handleDemoActive}>
+      <Button className="m-1" active color="success" outline onClick={handleDemoActive}>
         Demo videos
       </Button>
-      <Button className="mx-1" active color="success" outline onClick={handleShowFavirites}>
+      <Button className="m-1" active color="success" outline onClick={handleShowFavirites}>
         {showFavirites ? `Show All` : `Show Favorites`}
       </Button>
-      <Button className="mx-1" active color="success" outline onClick={handleSort}>
+      <Button className="m-1" active color="success" outline onClick={handleSort}>
         {newFirst ? `Sort by: oldest` : `Sort by: newest first`}
       </Button>
-      <Button className="mx-5  " active color="danger" outline onClick={handleDeleteAll}>
+      <Button className="mx-5 mt-1 " active color="danger" outline onClick={handleDeleteAll}>
         Delete All
       </Button>
     </>

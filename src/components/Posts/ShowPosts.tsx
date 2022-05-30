@@ -59,10 +59,11 @@ export const ShowPosts = () => {
     sort();
   }, [sortByDate]);
 
-  // useEffect(() => {
-  //   const nevUrl: any = [...myFav, id];
-  //   setMyFav(favList);
-  // }, [sortByDate]);
+  useEffect(() => {
+    const newUrl: any = [addUrl, ...localStorageVideos];
+    console.log(newUrl);
+    setVid(newUrl);
+  }, [addUrl]);
 
   useEffect(() => {
     typeof localStorageVideos !== 'undefined' && localStorageVideos.length > 0

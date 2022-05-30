@@ -1,24 +1,30 @@
-import React, { SyntheticEvent, useContext, useState } from 'react';
+import React, { SyntheticEvent, useContext, useEffect, useState } from 'react';
 import { Button, Form, FormGroup, Input, InputGroup } from 'reactstrap';
 import { AddContext } from '../../contexts/add.context';
+import getVideoId from 'get-video-id';
+
 export const UrlForm = () => {
   const { addUrl, setAddUrl } = useContext(AddContext);
-  const [inputVal, setInputVal] = useState(addUrl);
+  const [inputVal, setInputVal] = useState<any>(addUrl);
+  const videoFromUrl = getVideoId(inputVal);
+  const newVideoId: any = videoFromUrl.id;
 
-  const setUrlLocalState = (e: SyntheticEvent) => {
+  const handleAddNewUrl = (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(inputVal);
+    if (typeof inputVal === 'string' && inputVal.length === 11) setAddUrl(newVideoId);
     setAddUrl(inputVal);
+    setInputVal('');
   };
+
   return (
     <>
-      <Form onSubmit={setUrlLocalState}>
+      <Form onSubmit={handleAddNewUrl}>
         <FormGroup>
           <InputGroup>
             <Input
               id="url"
               name="url"
-              placeholder="Add video url or video id"
+              placeholder="Add Youtube video url or video id"
               type="text"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
@@ -26,7 +32,7 @@ export const UrlForm = () => {
             <Button>Add</Button>
           </InputGroup>
         </FormGroup>
-      </Form>{' '}
+      </Form>
     </>
   );
 };
