@@ -8,6 +8,7 @@ export const App = () => {
   const [addDemo, setAddDemo] = useState(false);
   const [showFavirites, setShowFavirites] = useState(false);
   const [sortByDate, setSortByDate] = useState(false);
+  const [columnView, setColumnView] = useState(false);
   const [deleteAll, setDeleteAll] = useState(false);
   return (
     <>
@@ -23,6 +24,8 @@ export const App = () => {
           setSortByDate,
           deleteAll,
           setDeleteAll,
+          columnView,
+          setColumnView,
         }}
       >
         <Header />

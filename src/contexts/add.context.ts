@@ -9,6 +9,8 @@ export const AddContext = createContext({
   setShowFavirites: (data: boolean) => {},
   sortByDate: false,
   setSortByDate: (data: boolean) => {},
+  columnView: false,
+  setColumnView: (data: boolean) => {},
   deleteAll: false,
   setDeleteAll: (data: boolean) => {},
 });

@@ -15,6 +15,8 @@ export const Buttons = () => {
     setDeleteAll,
     showFavirites,
     setShowFavirites,
+    columnView,
+    setColumnView,
   } = useContext(AddContext);
   const [newFirst, setNewFirst] = useState(sortByDate);
 
@@ -22,6 +24,7 @@ export const Buttons = () => {
     e.preventDefault();
     setAddDemo(!addDemo);
   };
+
   const handleShowFavirites = (e: SyntheticEvent) => {
     e.preventDefault();
     setShowFavirites(!showFavirites);
@@ -32,6 +35,12 @@ export const Buttons = () => {
     setSortByDate(!sortByDate);
     setNewFirst(!newFirst);
   };
+
+  const handleView = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setColumnView(!columnView);
+  };
+
   const handleDeleteAll = (e: SyntheticEvent) => {
     e.preventDefault();
     setDeleteAll(true);
@@ -46,6 +55,9 @@ export const Buttons = () => {
       </Button>
       <Button className="m-1" active color="success" outline onClick={handleSort}>
         {newFirst ? `Sort by: oldest` : `Sort by: newest first`}
+      </Button>
+      <Button className="m-1" active color="success" outline onClick={handleView}>
+        {columnView ? `Column` : `Row`}
       </Button>
       <Button className="mx-5 mt-1 " active color="danger" outline onClick={handleDeleteAll}>
         Delete All

@@ -8,7 +8,7 @@ import useLocalStorage from '../../hooks/useLoclalStorage';
 import './ShowPosts.css';
 
 export const ShowPosts = () => {
-  const { addUrl, addDemo, sortByDate, deleteAll, setDeleteAll, showFavirites } =
+  const { addUrl, addDemo, sortByDate, deleteAll, setDeleteAll, showFavirites, columnView } =
     useContext(AddContext);
   const [data, setData] = useState<any>([]);
   const [vid, setVid] = useState([]);
@@ -88,7 +88,13 @@ export const ShowPosts = () => {
   return (
     <>
       <div className="posts-wrap">
-        <Row className="d-flex justify-content-center">
+        <Row
+          className={
+            columnView
+              ? 'rowView d-flex justify-content-center'
+              : 'columnView d-flex flex-column bd-highlight justify-content-center align-items-center'
+          }
+        >
           {currentPost.map((data: any, index: number) => (
             <OnePost
               key={data.id + index}

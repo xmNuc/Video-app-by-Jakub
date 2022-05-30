@@ -1,3 +1,19 @@
 .posts-wrap {
   padding: 20px;
 }
+
+.columnView .card-img-top {
+  display: none;
+}
+.columnView .my-card {
+  max-width: 80%;
+  width: 80%;
+}
+.columnView .my-card .favorites {
+  top: 10%;
+  z-index: 999;
+}
+
+.rowView .card-img-top {
+  display: block;
+}
