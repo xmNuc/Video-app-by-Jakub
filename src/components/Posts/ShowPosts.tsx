@@ -91,8 +91,8 @@ export const ShowPosts = () => {
         <Row
           className={
             columnView
-              ? 'rowView d-flex justify-content-center'
-              : 'columnView d-flex flex-column bd-highlight justify-content-center align-items-center'
+              ? 'columnView d-flex flex-column bd-highlight justify-content-center align-items-center'
+              : 'rowView d-flex justify-content-center'
           }
         >
           {currentPost.map((data: any, index: number) => (

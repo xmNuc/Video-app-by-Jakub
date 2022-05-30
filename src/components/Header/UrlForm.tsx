@@ -11,9 +11,12 @@ export const UrlForm = () => {
 
   const handleAddNewUrl = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (typeof inputVal === 'string' && inputVal.length === 11) setAddUrl(newVideoId);
-    setAddUrl(inputVal);
-    setInputVal('');
+    if (typeof inputVal === 'string' && inputVal.length === 11) {
+      setAddUrl(inputVal);
+    } else {
+      setAddUrl(newVideoId);
+      setInputVal('');
+    }
   };
 
   return (

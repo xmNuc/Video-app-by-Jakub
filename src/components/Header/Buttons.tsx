@@ -1,10 +1,8 @@
 import React, { SyntheticEvent, useContext, useState } from 'react';
 import { Button } from 'reactstrap';
 import { AddContext } from '../../contexts/add.context';
-
-// interface Props {
-//   handleDemoActive: (e: React.MouseEvent<HTMLElement>) => void;
-// }
+import list from '../../img/list.png';
+import blocks from '../../img/blocks.png';
 
 export const Buttons = () => {
   const {
@@ -56,8 +54,8 @@ export const Buttons = () => {
       <Button className="m-1" active color="success" outline onClick={handleSort}>
         {newFirst ? `Sort by: oldest` : `Sort by: newest first`}
       </Button>
-      <Button className="m-1" active color="success" outline onClick={handleView}>
-        {columnView ? `Column` : `Row`}
+      <Button className="btn-view m-1" active color="success" outline onClick={handleView}>
+        {columnView ? <img src={blocks} alt="Video icon" /> : <img src={list} alt="Video icon" />}
       </Button>
       <Button className="mx-5 mt-1 " active color="danger" outline onClick={handleDeleteAll}>
         Delete All
