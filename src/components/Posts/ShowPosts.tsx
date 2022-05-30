@@ -61,7 +61,6 @@ export const ShowPosts = () => {
 
   useEffect(() => {
     const newUrl: any = [addUrl, ...localStorageVideos];
-    console.log(newUrl);
     setVid(newUrl);
   }, [addUrl]);
 
