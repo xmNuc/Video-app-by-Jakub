@@ -22,18 +22,28 @@ export const OnePost = (props: Props) => {
     setModal(!modal);
   };
 
+  // console.log(props.myFav.find((asd: any) => asd.id === props.id));
+  let asda = props.myFav.find((arr: []) => arr === props.id);
+  // console.log(props.myFav);
+
   return (
     <>
       <Card className="my-card">
         <img
           className="favorites"
-          src={props.myFav.indexOf(props.id) > -1 ? favYes : favNo}
+          src={asda ? favYes : favNo}
+          // src={props.myFav.indexOf(props.id) > -1 ? favYes : favNo}
           alt="favorites"
           onClick={
-            props.myFav.indexOf(props.id) > -1
+            asda
               ? () => props.handleRemoveFavorites(props.id)
               : () => props.handleFavorites(props.id)
           }
+          // onClick={
+          //   props.myFav.indexOf(props.id) > -1
+          //     ? () => props.handleRemoveFavorites(props.id)
+          //     : () => props.handleFavorites(props.id)
+          // }
         />
 
         <div>

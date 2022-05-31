@@ -3,6 +3,8 @@ import { Button } from 'reactstrap';
 import { AddContext } from '../../contexts/add.context';
 import list from '../../img/list.png';
 import blocks from '../../img/blocks.png';
+import sortup from '../../img/sort-up.png';
+import sortdown from '../../img/sort-down.png';
 
 export const Buttons = () => {
   const {
@@ -51,13 +53,13 @@ export const Buttons = () => {
       <Button className="m-1" active color="success" outline onClick={handleShowFavirites}>
         {showFavirites ? `Show All` : `Show Favorites`}
       </Button>
-      <Button className="m-1" active color="success" outline onClick={handleSort}>
-        {newFirst ? `Sort by: oldest` : `Sort by: newest first`}
+      <Button className="m-1" active color="light" outline onClick={handleSort}>
+        {newFirst ? <img src={sortup} alt="sort up" /> : <img src={sortdown} alt="sort down" />}
       </Button>
-      <Button className="btn-view m-1" active color="success" outline onClick={handleView}>
-        {columnView ? <img src={blocks} alt="Video icon" /> : <img src={list} alt="Video icon" />}
+      <Button className="btn-view m-1" active color="light" outline onClick={handleView}>
+        {columnView ? <img src={blocks} alt="blocks icon" /> : <img src={list} alt="list icon" />}
       </Button>
-      <Button className="mx-5 mt-1 " active color="danger" outline onClick={handleDeleteAll}>
+      <Button className=" m-1 " active color="danger" outline onClick={handleDeleteAll}>
         Delete All
       </Button>
     </>

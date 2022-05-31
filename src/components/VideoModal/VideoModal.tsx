@@ -11,7 +11,11 @@ interface Props {
 
 export const VideoModal = (props: Props) => {
   return (
-    <Modal isOpen={props.modal} toggle={props.toggleModal}>
+    <Modal
+      className="d-flex justify-content-center"
+      isOpen={props.modal}
+      toggle={props.toggleModal}
+    >
       <ReactPlayer
         url={`https://www.youtube-nocookie.com/embed/${props.vid}`}
         playing={true}

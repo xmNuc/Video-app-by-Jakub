@@ -10,6 +10,14 @@ header h2 {
   color: white;
   font-weight: 200;
 }
+header h2 a {
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+header h2 a:hover {
+  color: rgb(85, 134, 138);
+}
 header p {
   color: white;
   font-weight: 100;

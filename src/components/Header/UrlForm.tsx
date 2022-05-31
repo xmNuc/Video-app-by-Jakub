@@ -4,17 +4,19 @@ import { AddContext } from '../../contexts/add.context';
 import getVideoId from 'get-video-id';
 
 export const UrlForm = () => {
-  const { addUrl, setAddUrl } = useContext(AddContext);
-  const [inputVal, setInputVal] = useState<any>(addUrl);
+  const { setAddUrl, urlString, setUrlString } = useContext(AddContext);
+  const [inputVal, setInputVal] = useState<string>(urlString);
   const videoFromUrl = getVideoId(inputVal);
   const newVideoId: any = videoFromUrl.id;
 
   const handleAddNewUrl = (e: SyntheticEvent) => {
     e.preventDefault();
     if (typeof inputVal === 'string' && inputVal.length === 11) {
-      setAddUrl(inputVal);
+      setUrlString(inputVal);
+      setAddUrl(true);
     } else {
-      setAddUrl(newVideoId);
+      setUrlString(newVideoId);
+      setAddUrl(true);
       setInputVal('');
     }
   };

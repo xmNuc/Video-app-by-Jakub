@@ -4,7 +4,8 @@ import { AddContext } from './contexts/add.context';
 import { Main } from './components/Main/Main';
 
 export const App = () => {
-  const [addUrl, setAddUrl] = useState('');
+  const [addUrl, setAddUrl] = useState(false);
+  const [urlString, setUrlString] = useState('');
   const [addDemo, setAddDemo] = useState(false);
   const [showFavirites, setShowFavirites] = useState(false);
   const [sortByDate, setSortByDate] = useState(false);
@@ -16,6 +17,8 @@ export const App = () => {
         value={{
           addUrl,
           setAddUrl,
+          urlString,
+          setUrlString,
           addDemo,
           showFavirites,
           setShowFavirites,

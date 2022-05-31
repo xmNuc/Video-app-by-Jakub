@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { AddContext } from '../../contexts/add.context';
 import { Row } from 'reactstrap';
 import { OnePost } from './OnePost';
@@ -8,10 +8,19 @@ import useLocalStorage from '../../hooks/useLoclalStorage';
 import './ShowPosts.css';
 
 export const ShowPosts = () => {
-  const { addUrl, addDemo, sortByDate, deleteAll, setDeleteAll, showFavirites, columnView } =
-    useContext(AddContext);
+  const {
+    addUrl,
+    setAddUrl,
+    urlString,
+    addDemo,
+    sortByDate,
+    deleteAll,
+    setDeleteAll,
+    showFavirites,
+    columnView,
+  } = useContext(AddContext);
   const [data, setData] = useState<any>([]);
-  const [vid, setVid] = useState([]);
+  const [vid, setVid] = useState(videoId);
   const [localStorageVideos, setLocalStorageVideos] = useLocalStorage('allVideos', vid);
   const [myFav, setMyFav] = useLocalStorage('favorites', []);
   const [tempState, setTempState] = useLocalStorage('tempVideos', []);
@@ -29,6 +38,11 @@ export const ShowPosts = () => {
       .sort((a: any, b: any) => (a.snippet.publishedAt < b.snippet.publishedAt ? 1 : -1));
     sortByDate ? setData(newData) : setData(newData.reverse());
   };
+
+  useEffect(() => {
+    localStorageVideos.length > 0 && setVid(localStorageVideos);
+    // console.log(localStorageVideos.length > 0);
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -59,16 +73,14 @@ export const ShowPosts = () => {
     sort();
   }, [sortByDate]);
 
-  useEffect(() => {
-    const newUrl: any = [addUrl, ...localStorageVideos];
-    setVid(newUrl);
+  const newUrl = useCallback(() => {
+    setAddUrl(!addUrl);
   }, [addUrl]);
 
   useEffect(() => {
-    typeof localStorageVideos !== 'undefined' && localStorageVideos.length > 0
-      ? setVid(localStorageVideos)
-      : setVid(videoId);
-  }, []);
+    const newUrl: any = [urlString, ...localStorageVideos];
+    setVid(newUrl);
+  }, [newUrl]);
 
   const handleFavorites = (id: string) => {
     const favList: any = [...myFav, id];
