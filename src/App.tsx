@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Header } from './components/Header/Header';
+import { AddContext } from './contexts/add.context';
+import { Main } from './components/Main/Main';
 
-function App() {
+export const App = () => {
+  const [addUrl, setAddUrl] = useState(false);
+  const [urlString, setUrlString] = useState('');
+  const [addDemo, setAddDemo] = useState(false);
+  const [showFavirites, setShowFavirites] = useState(false);
+  const [sortByDate, setSortByDate] = useState(false);
+  const [columnView, setColumnView] = useState(false);
+  const [deleteAll, setDeleteAll] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AddContext.Provider
+        value={{
+          addUrl,
+          setAddUrl,
+          urlString,
+          setUrlString,
+          addDemo,
+          showFavirites,
+          setShowFavirites,
+          setAddDemo,
+          sortByDate,
+          setSortByDate,
+          deleteAll,
+          setDeleteAll,
+          columnView,
+          setColumnView,
+        }}
+      >
+        <Header />
+        <Main />
+      </AddContext.Provider>
+    </>
   );
-}
-
-export default App;
+};

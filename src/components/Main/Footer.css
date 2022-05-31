@@ -1,0 +1,10 @@
+.footer {
+  padding: 1px;
+  color: rgb(0, 0, 0);
+}
+.footer a {
+  padding: 1px;
+  font-size: 0.9rem;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}

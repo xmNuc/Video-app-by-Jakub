@@ -1,0 +1,32 @@
+header {
+  padding: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h2 {
+  color: white;
+  font-weight: 200;
+}
+header h2 a {
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+header h2 a:hover {
+  color: rgb(85, 134, 138);
+}
+header p {
+  color: white;
+  font-weight: 100;
+  font-size: small;
+}
+.header-link {
+  text-decoration: none;
+}
+
+.input-group {
+  width: 100%;
+}
