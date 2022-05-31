@@ -54,7 +54,7 @@ export const ShowPosts = () => {
 
   useEffect(() => {
     addDemo && setLocalStorageVideos(videoId);
-    setVid(localStorageVideos);
+    setMyFav([]);
   }, [addDemo]);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const ShowPosts = () => {
   }, [showFavirites]);
 
   useEffect(() => {
-    deleteAll && setVid([]);
+    deleteAll && setLocalStorageVideos([]);
     setDeleteAll(false);
   }, [deleteAll]);
 
@@ -88,12 +88,20 @@ export const ShowPosts = () => {
   const removeItem = (id: string) => {
     setLocalStorageVideos(vid.filter((one: string) => one !== id));
   };
-  if (!data) {
-    <h2 className="w-50 mx-auto">Loading data...</h2>;
-  }
+  localStorageVideos.length == 0 && (
+    <h1>
+      Please add youre Youtube videos or use <span onClick={() => addDemo}>Demo Videos</span>{' '}
+    </h1>
+  );
   return (
     <>
       <div className="posts-wrap">
+        <div className="mt-5 d-flex justify-content-center align-items-center">
+          {localStorageVideos.length == 0 && (
+            <h1>Please add youre Youtube videos or press Demo Videos</h1>
+          )}
+        </div>
+
         <Row
           className={
             columnView
