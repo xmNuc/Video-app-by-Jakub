@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import React from 'react';
+import { Button, Modal } from 'reactstrap';
 import ReactPlayer from 'react-player';
 import './VideoModal.css';
 

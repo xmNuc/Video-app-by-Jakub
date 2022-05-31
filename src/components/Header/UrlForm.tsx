@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useContext, useEffect, useState } from 'react';
+import React, { SyntheticEvent, useContext, useState } from 'react';
 import { Button, Form, FormGroup, Input, InputGroup } from 'reactstrap';
 import { AddContext } from '../../contexts/add.context';
 import getVideoId from 'get-video-id';

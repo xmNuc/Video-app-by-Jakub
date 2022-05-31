@@ -4,7 +4,6 @@ import { VideoModal } from '../VideoModal/VideoModal';
 import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
 import './OnePost.css';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 interface Props {
   id: string | string[];
@@ -19,8 +18,6 @@ interface Props {
 
 export const OnePost = (props: Props) => {
   const [modal, setModal] = useState(false);
-
-  console.log(props.showFavirites);
 
   const toggleModal = () => {
     setModal(!modal);

@@ -2,14 +2,6 @@ Video app by Jakub
 author: Jakub (xmnuc@o2.pl)
 date of build: 05.2022.
 
-### `npm start`
-
-Runs the app in the development mode.\
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-
 EN:
 Video app
 
@@ -134,3 +126,13 @@ Z pliku package.json
 "@types/bootstrap": "^5.1.12",
 "@types/vimeo": "^2.1.4"
 }
+
+### `npm start`
+
+Runs the app in the development mode.\
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+
+2022 Jaub D (thecatrix.eu)(xmnuc@o2.pl)

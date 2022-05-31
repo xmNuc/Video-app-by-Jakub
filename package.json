@@ -2,8 +2,8 @@
   "name": "video-app",
   "version": "1.0.0",
   "author": "Jakub D <xmnuc@o2.pl> (http://thecatrix.eu)",
-  "description": "Video app - Youtube,Vimeo?",
-  "license": "CC-BY-3.0",
+  "description": "Video app - Youtube",
+  "license": "BSD-3-Clause",
   "homepage": "./",
   "private": true,
   "dependencies": {
