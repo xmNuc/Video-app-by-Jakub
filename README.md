@@ -1,3 +1,7 @@
+Video app by Jakub
+author: Jakub (xmnuc@o2.pl)
+date of build: 05.2022.
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -34,7 +38,7 @@ Videos are listed with data such as
 and actions such as:
 ● watch (also after clicking on the thumbnail, the movie then opens in the modal)
 ● delete
-● add to favorites
+● add to favorites - the star button adds the video to your favorites
 
 The list of films has:
 ● pagination
@@ -84,7 +88,7 @@ Filmy są wylistowane z danymi takimi jak
 i akcjami takimi jak:
 ● obejrzyj (również po kliknięciu w miniaturkę, film wtedy otwiera się w modalu)
 ● usuń
-● dodaj do ulubionych
+● dodaj do ulubionych - przycisk gwiazdki dodaje video do ulubionych
 
 Lista filmów posiada:
 ● paginację
