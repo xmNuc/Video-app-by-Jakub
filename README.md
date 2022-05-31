@@ -1,3 +1,4 @@
+```
 Video app by Jakub
 author: Jakub (xmnuc@o2.pl)
 date of build: 05.2022.
@@ -136,3 +137,4 @@ Runs the app in the development mode.\
 Builds the app for production to the `build` folder.\
 
 2022 Jaub D (thecatrix.eu)(xmnuc@o2.pl)
+```
