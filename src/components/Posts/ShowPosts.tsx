@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AddContext } from '../../contexts/add.context';
 import { Row } from 'reactstrap';
 import { OnePost } from './OnePost';
@@ -20,10 +20,9 @@ export const ShowPosts = () => {
     columnView,
   } = useContext(AddContext);
   const [data, setData] = useState<any>([]);
-  const [vid, setVid] = useState(videoId);
-  const [localStorageVideos, setLocalStorageVideos] = useLocalStorage('allVideos', vid);
+  const [localStorageVideos, setLocalStorageVideos] = useLocalStorage('allVideos', []);
+  const [vid, setVid] = useState(localStorageVideos);
   const [myFav, setMyFav] = useLocalStorage('favorites', []);
-  const [tempState, setTempState] = useLocalStorage('tempVideos', []);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(10);
 
@@ -40,9 +39,8 @@ export const ShowPosts = () => {
   };
 
   useEffect(() => {
-    localStorageVideos.length > 0 && setVid(localStorageVideos);
-    // console.log(localStorageVideos.length > 0);
-  }, []);
+    setVid(localStorageVideos);
+  }, [localStorageVideos]);
 
   useEffect(() => {
     (async () => {
@@ -52,16 +50,15 @@ export const ShowPosts = () => {
       const ytData = await res.json();
       setData(ytData.items);
     })();
-    setLocalStorageVideos(vid);
   }, [vid]);
 
   useEffect(() => {
-    setVid(videoId);
+    addDemo && setLocalStorageVideos(videoId);
+    setVid(localStorageVideos);
   }, [addDemo]);
 
   useEffect(() => {
-    setTempState(vid);
-    showFavirites ? setVid(myFav) : setVid(tempState);
+    showFavirites ? setVid(myFav) : setVid(localStorageVideos);
   }, [showFavirites]);
 
   useEffect(() => {
@@ -73,14 +70,11 @@ export const ShowPosts = () => {
     sort();
   }, [sortByDate]);
 
-  const newUrl = useCallback(() => {
-    setAddUrl(!addUrl);
-  }, [addUrl]);
-
   useEffect(() => {
     const newUrl: any = [urlString, ...localStorageVideos];
-    setVid(newUrl);
-  }, [newUrl]);
+    addUrl && setLocalStorageVideos(newUrl);
+    setAddUrl(false);
+  }, [addUrl]);
 
   const handleFavorites = (id: string) => {
     const favList: any = [...myFav, id];
@@ -92,7 +86,7 @@ export const ShowPosts = () => {
   };
 
   const removeItem = (id: string) => {
-    setVid(vid.filter((one: string) => one !== id));
+    setLocalStorageVideos(vid.filter((one: string) => one !== id));
   };
   if (!data) {
     <h2 className="w-50 mx-auto">Loading data...</h2>;

@@ -8,7 +8,7 @@ export const Header = () => {
     <>
       <header className="fixed-top d-flex align-items-center justify-content-between row flex-wrap">
         <h2 className="d-flex justify-content-center col-2">
-          <a href="./">
+          <a href="/">
             <strong>Video</strong> App{' '}
           </a>{' '}
           <p>by Jakub</p>
