@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.env
+_old/App.test.tsx
+_old/ComparetwoArrays.ts
+_old/build.7z
+_old/Vimeo/Vimeo.tsx
