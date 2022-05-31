@@ -4,6 +4,7 @@ import { VideoModal } from '../VideoModal/VideoModal';
 import favYes from '../../img/favyes.png';
 import favNo from '../../img/favno.png';
 import './OnePost.css';
+import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 interface Props {
   id: string | string[];
@@ -11,12 +12,15 @@ interface Props {
   removeItem: boolean | any;
   myFav: any;
   setMyFav: any;
+  showFavirites: boolean;
   handleFavorites: any;
   handleRemoveFavorites: any;
 }
 
 export const OnePost = (props: Props) => {
   const [modal, setModal] = useState(false);
+
+  console.log(props.showFavirites);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -67,12 +71,14 @@ export const OnePost = (props: Props) => {
               Play Video
             </Button>
             <VideoModal vid={props.data.id} toggleModal={toggleModal} modal={modal} />
-            <Button
-              className="d-flex justify-content-center"
-              onClick={() => props.removeItem(props.data.id)}
-            >
-              Delete
-            </Button>
+            {!props.showFavirites && (
+              <Button
+                className="d-flex justify-content-center"
+                onClick={() => props.removeItem(props.data.id)}
+              >
+                Delete
+              </Button>
+            )}
           </Row>
         </CardBody>
       </Card>

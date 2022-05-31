@@ -98,10 +98,10 @@ export const ShowPosts = () => {
       <div className="posts-wrap">
         <div className="mt-5 d-flex justify-content-center align-items-center">
           {localStorageVideos.length == 0 && (
-            <h1>Please add youre Youtube videos or press Demo Videos</h1>
+            <h1>Please add youre Youtube videos or use Demo Videos</h1>
           )}
         </div>
-
+        <Pagination postPerPage={postPerPage} totalPost={vid.length} paginate={paginate} />
         <Row
           className={
             columnView
@@ -117,6 +117,7 @@ export const ShowPosts = () => {
               removeItem={removeItem}
               myFav={myFav}
               setMyFav={setMyFav}
+              showFavirites={showFavirites}
               handleFavorites={handleFavorites}
               handleRemoveFavorites={handleRemoveFavorites}
             />
