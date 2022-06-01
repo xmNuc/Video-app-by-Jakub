@@ -17,6 +17,7 @@ export const ShowPosts = () => {
     deleteAll,
     setDeleteAll,
     showFavirites,
+    setShowFavirites,
     columnView,
   } = useContext(AddContext);
   const [data, setData] = useState<any>([]);
@@ -55,6 +56,8 @@ export const ShowPosts = () => {
   useEffect(() => {
     addDemo && setLocalStorageVideos(videoId);
     setMyFav([]);
+    setVid(localStorageVideos);
+    setShowFavirites(false);
   }, [addDemo]);
 
   useEffect(() => {
