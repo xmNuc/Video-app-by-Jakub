@@ -7,3 +7,19 @@
   background-image: -o-linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
   background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
 }
+
+@media (max-width: 522px) {
+  .main-wrap {
+    padding-top: 130px;
+  }
+}
+@media (max-width: 300px) {
+  .main-wrap {
+    padding-top: 180px;
+  }
+}
+@media (max-width: 235px) {
+  .main-wrap {
+    padding-top: 220px;
+  }
+}
