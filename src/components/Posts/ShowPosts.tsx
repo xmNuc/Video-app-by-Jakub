@@ -99,7 +99,7 @@ export const ShowPosts = () => {
         )}
 
         {myFav.length == 0 && showFavirites && (
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="mt-5 pt-5 d-flex justify-content-center align-items-center">
             <h4>You have no favorites videos. Add videos to Favorites.</h4>
           </div>
         )}
