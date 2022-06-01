@@ -8,18 +8,23 @@
   background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
 }
 
-@media (max-width: 522px) {
+@media (max-width: 1200px) {
   .main-wrap {
-    padding-top: 130px;
+    padding-top: 150px;
   }
 }
-@media (max-width: 300px) {
+@media (max-width: 522px) {
   .main-wrap {
     padding-top: 180px;
   }
 }
+@media (max-width: 303px) {
+  .main-wrap {
+    padding-top: 210px;
+  }
+}
 @media (max-width: 235px) {
   .main-wrap {
-    padding-top: 220px;
+    padding-top: 260px;
   }
 }

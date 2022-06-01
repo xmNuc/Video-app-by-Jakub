@@ -17,6 +17,7 @@ export const ShowPosts = () => {
     deleteAll,
     setDeleteAll,
     showFavirites,
+    setShowFavirites,
     columnView,
   } = useContext(AddContext);
   const [data, setData] = useState<any>([]);
@@ -55,6 +56,8 @@ export const ShowPosts = () => {
   useEffect(() => {
     addDemo && setLocalStorageVideos(videoId);
     setMyFav([]);
+    setVid(localStorageVideos);
+    setShowFavirites(false);
   }, [addDemo]);
 
   useEffect(() => {
@@ -88,19 +91,21 @@ export const ShowPosts = () => {
   const removeItem = (id: string) => {
     setLocalStorageVideos(vid.filter((one: string) => one !== id));
   };
-  localStorageVideos.length == 0 && (
-    <h1>
-      Please add youre Youtube videos or use <span onClick={() => addDemo}>Demo Videos</span>{' '}
-    </h1>
-  );
+  localStorageVideos.length == 0 && <h1>Please add youre Youtube videos or use Demo Videos</h1>;
   return (
     <>
       <div className="posts-wrap">
-        <div className="mt-5 d-flex justify-content-center align-items-center">
-          {localStorageVideos.length == 0 && (
-            <h1>Please add youre Youtube videos or use Demo Videos</h1>
-          )}
-        </div>
+        {localStorageVideos.length == 0 && (
+          <div className="mt-5 pt-5 d-flex justify-content-center align-items-center">
+            <h4>Please add youre Youtube videos or use Demo Videos.</h4>
+          </div>
+        )}
+
+        {myFav.length == 0 && showFavirites && (
+          <div className="mt-5 pt-5 d-flex justify-content-center align-items-center">
+            <h4>You have no favorites videos. Add videos to Favorites.</h4>
+          </div>
+        )}
         <Pagination postPerPage={postPerPage} totalPost={vid.length} paginate={paginate} />
         <Row
           className={
