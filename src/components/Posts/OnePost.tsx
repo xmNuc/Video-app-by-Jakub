@@ -9,8 +9,8 @@ interface Props {
   id: string | string[];
   data: any;
   removeItem: boolean | any;
-  myFav: any;
-  setMyFav: any;
+  myFav: never[];
+  setMyFav: (value: never[] | ((val: never[]) => never[])) => void;
   showFavirites: boolean;
   handleFavorites: any;
   handleRemoveFavorites: any;
