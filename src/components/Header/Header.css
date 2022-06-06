@@ -30,3 +30,10 @@ header p {
 .input-group {
   width: 100%;
 }
+
+@media (max-width: 576px) {
+  .col-xs-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
