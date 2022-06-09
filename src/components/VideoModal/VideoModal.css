@@ -6,8 +6,35 @@ body {
   padding-top: 20vh;
 }
 .modal-content {
-  width: 640px;
-  height: 480px;
+  width: 710px;
+  height: 460px;
   background: none;
   border: none;
+  margin: 0.5rem;
+}
+@media (min-width: 600px) {
+  .modal-dialog {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 580px) {
+  .modal-content {
+    height: 380px;
+  }
+}
+@media (max-width: 540px) {
+  .modal-content {
+    height: 360px;
+  }
+}
+@media (max-width: 500px) {
+  .modal-content {
+    height: 330px;
+  }
+}
+@media (max-width: 480px) {
+  .modal-content {
+    height: 310px;
+  }
 }
