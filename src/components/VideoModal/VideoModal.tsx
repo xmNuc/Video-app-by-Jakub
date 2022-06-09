@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Modal } from 'reactstrap';
 import ReactPlayer from 'react-player';
 import './VideoModal.css';
@@ -20,8 +20,8 @@ export const VideoModal = (props: Props) => {
         url={`https://www.youtube-nocookie.com/embed/${props.vid}`}
         playing={true}
         controls={true}
-        width="640px"
-        height="480px"
+        width="100%"
+        height="100%"
       />
       <Button className="mt-4" color="primary" onClick={props.toggleModal}>
         Close
