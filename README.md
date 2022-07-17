@@ -105,31 +105,31 @@ Przykładowy plik .env zapisany jest w katalogu główny programu.
 
 EN:
 All dependence used in the program.
-From the package.json file
+Versions you can find in the package.json file
 PL:
 Wyszytkie dependence wykorzystane w programie.
-Z pliku package.json
+Wersje wykorzystanych zasobów znajdziesz w pliku package.json
 "dependencies": {
-"@testing-library/jest-dom": "^5.16.4",
-"@testing-library/react": "^13.2.0",
-"@testing-library/user-event": "^13.5.0",
-"@types/jest": "^27.5.1",
-"@types/node": "^16.11.36",
-"@types/react": "^18.0.9",
-"@types/react-dom": "^18.0.4",
-"bootstrap": "^5.1.3",
-"get-video-id": "^3.6.4",
-"react": "^18.1.0",
-"react-dom": "^18.1.0",
-"react-player": "^2.10.1",
-"react-scripts": "^2.1.8",
-"reactstrap": "^9.0.2",
-"typescript": "^4.6.4",
-"web-vitals": "^2.1.4"
+"@testing-library/jest-dom",
+"@testing-library/react"
+"@testing-library/user-event"
+"@types/jest"
+"@types/node"
+"@types/react"
+"@types/react-dom"
+"bootstrap"
+"get-video-id"
+"react"
+"react-dom"
+"react-player"
+"react-scripts"
+"reactstrap"
+"typescript"
+"web-vitals"
 
 "devDependencies": {
-"@types/bootstrap": "^5.1.12",
-"@types/vimeo": "^2.1.4"
+"@types/bootstrap"
+"@types/vimeo"
 }
 
 ### `npm start`
